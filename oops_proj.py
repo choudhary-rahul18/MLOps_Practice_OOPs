@@ -1,9 +1,14 @@
 class Chatbook:
+
+    __user_id = 1
+
     def __init__(self):
+        self.id = Chatbook.__user_id
+        Chatbook.__user_id += 1
         self.username = ''
         self.password = ''
         self.loggedin = False
-        self.menu()
+        # self.menu()
 
     
     def menu(self):
@@ -19,11 +24,19 @@ class Chatbook:
         elif user_input ==2:
             self.signin()
         elif user_input == 3:
-            pass
+            self.my_post()
         elif user_input == 4:
-            pass
+            self.sendmsg()
         else:
             exit()
+
+    @staticmethod
+    def get_id():           # getter
+        return Chatbook.__user_id
+    
+    @staticmethod
+    def set_id(val):       # setter
+        Chatbook.__user_id = val
 
     def signup(self):
         email = input("Enter your email here --> ")
@@ -49,5 +62,22 @@ class Chatbook:
         
         self.menu()
 
+    def my_post(self):
+        if self.loggedin == False:
+            print("You need to signin first to post something.\n")
+        else:
+            message = input("Enter your message here --> ")
+            print(f"Following content has been posted -> {message}\n")
+        self.menu()
 
-ram = Chatbook()
+    
+    def sendmsg(self):
+        if self.loggedin == False:
+            print("You need to signin first to post something.\n")
+        else:
+            txt = input("Enter your message here --> ")
+            friend = input("Whom to send the msg? -> ")
+            print(f"Your message has been sent to {friend}\n")
+        self.menu()
+
+

@@ -14,10 +14,16 @@ class Employee:
 
 
 
-# Create an object/instance of the class Employee
-sam = Employee()
+from oops_proj import Chatbook
 
-#printing the attributes
-print(sam.id)
-#calling a method
-sam.travel("Mumbai")
+user1 = Chatbook()
+print(user1.id)
+
+user2 = Chatbook()
+user2.set_id(10)
+print(user2.id)
+
+user3= Chatbook()
+print(user3.id)
+# user2 = Chatbook()
+# print(user2.id)
